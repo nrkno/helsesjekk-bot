@@ -56,7 +56,9 @@ ingress:
   ssoEnabled: true
 
 nrknoIngress:
-  enabled: false
+  enabled: true
+  nrknoAliasName: "helsesjekken"
+  dnsZone: "int.nrk.no"
 
 environmentVariables:
   - name: NAIS_DATABASE_HELSESJEKK_BOT_HELSESJEKK_BOT_URL
