@@ -14,8 +14,15 @@ export function middleware(request: NextRequest): NextResponse | void {
         return NextResponse.redirect(new URL(url.pathname, 'https://helsesjekk-bot.nav.no/'))
     }
     
-    console.log("Received headers:")
-    console.log(JSON.stringify(request.headers, null, 2))
+     // Convert headers to an object for easier logging
+     const headersObj: Record<string, string> = {}
+     request.headers.forEach((value, key) => {
+         headersObj[key] = value
+     })
+ 
+     console.log("Received headers:")
+     console.log(JSON.stringify(headersObj, null, 2))
+ 
 }
 
 // See "Matching Paths" below to learn more
