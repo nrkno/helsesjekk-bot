@@ -16,12 +16,12 @@ function Page(): ReactElement {
     return (
         <div>
             <BackLink href="/" />
-            <Heading size="large">Helse hele NRK</Heading>
+            <Heading size="large">Helsesjekk i NRK</Heading>
             <Suspense
                 fallback={
                     <div className="w-full aspect-video">
                         <Heading size="medium" level="3">
-                            Samlet score for alle aktive team
+                            Samlet resultat for alle aktive team
                         </Heading>
                         <Skeleton height="100%" width="100%" variant="rounded" />
                     </div>
@@ -41,7 +41,7 @@ async function GlobalGraph(): Promise<ReactElement> {
     return (
         <div>
             <Heading size="medium" level="3">
-                Samlet score for alle aktive team
+                Samlet resultat for alle aktive team
             </Heading>
             <div className="mt-4">
                 <GlobalScoreGraph data={globalScore} />
