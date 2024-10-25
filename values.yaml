@@ -57,6 +57,7 @@ ingress:
 
 nrknoIngress:
   enabled: true
+  ssoEnabled: true
   nrknoAliasName: "helsesjekken"
   dnsZone: "int.nrk.no"
 
