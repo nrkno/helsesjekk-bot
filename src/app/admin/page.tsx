@@ -88,7 +88,8 @@ function TeamDetail({ text, detail }: { text: string; detail: string }): ReactEl
 function getAdminGroupId(): string {
     if (isLocal) return 'fake-group'
 
-    return '14f8fff0-dfad-4eb6-b67e-d0faad6a5263'
+    // this uuid refers to 'Brukere innlogging utviklingsteamet'
+    return '5d09147f-470b-4962-a258-011ebe24210f'
 }
 
 export default Page
