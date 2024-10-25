@@ -42,7 +42,7 @@ stages:
               displayName: "Yarn build"
               env:
                 GITHUB_PACKAGES_TOKEN: $(GITHUB_PACKAGES_TOKEN)
-                NEXT_PUBLIC_ENVIRONMENT: dev
+                NEXT_PUBLIC_ENVIRONMENT: production
           extraDockerBuildArguments: "--build-arg GITHUB_PACKAGES_TOKEN='$(GITHUB_PACKAGES_TOKEN)'"
           environments:
             - name: test

@@ -10,7 +10,7 @@ COPY .yarnrc.yml /app/
 COPY yarn.lock /app/
 COPY prisma /app/prisma
 
-ENV NODE_ENV=test
+ENV NODE_ENV=production
 ARG GITHUB_PACKAGES_TOKEN=""
 ENV GITHUB_PACKAGES_TOKEN=$GITHUB_PACKAGES_TOKEN
 
@@ -21,7 +21,7 @@ FROM node:20-alpine AS runner
 
 RUN apk add --no-cache bash
 
-ENV NODE_ENV=test
+ENV NODE_ENV=production
 ENV YARN_CACHE_FOLDER=/tmp/yarn-cache
 
 WORKDIR /app
@@ -37,7 +37,7 @@ COPY next.config.mjs /app/
 COPY public /app/public/
 COPY .next /app/.next
 
-ENV NODE_ENV=test
+ENV NODE_ENV=production
 ARG GITHUB_PACKAGES_TOKEN=""
 ENV GITHUB_PACKAGES_TOKEN=$GITHUB_PACKAGES_TOKEN
 ENV AZURE_APP_CLIENT_ID='dummy-value'
