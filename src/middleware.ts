@@ -14,14 +14,6 @@ export function middleware(request: NextRequest): NextResponse | void {
         return NextResponse.redirect(new URL(url.pathname, 'https://helsesjekk-bot.nav.no/'))
     }
 
-    // Convert headers to an object for easier logging
-    const headersObj: Record<string, string> = {}
-    request.headers.forEach((value, key) => {
-        headersObj[key] = value
-    })
-
-    // Add test headers for local development
-    console.log('public env:  ' + browserEnv.NEXT_PUBLIC_ENVIRONMENT)
     if (browserEnv.NEXT_PUBLIC_ENVIRONMENT !== 'production') {
         const emailHeader = 'fakeuser@nrk.no, fakeuser@nrk.no' // comma separeted list of emails (with space between)
         const groupsHeader = ['fake-group', 'some-other-uuid'].join(',') // comma separated list of azure ad group uuids (no space)
@@ -29,18 +21,8 @@ export function middleware(request: NextRequest): NextResponse | void {
         const response = NextResponse.next()
         response.headers.set('X-Forwarded-Email', emailHeader)
         response.headers.set('X-Forwarded-Groups', groupsHeader)
-
-        // Convert headers to an object for easier logging
-        const responseHeadersObj: Record<string, string> = {}
-        response.headers.forEach((value, key) => {
-            responseHeadersObj[key] = value
-        })
-        console.log(JSON.stringify(responseHeadersObj, null, 2))
         return response
     }
-
-    console.log('Received headers:')
-    console.log(JSON.stringify(headersObj, null, 2))
 }
 
 // See "Matching Paths" below to learn more
