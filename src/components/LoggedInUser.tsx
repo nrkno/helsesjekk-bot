@@ -3,6 +3,7 @@ import { Skeleton, BodyShort, Detail, Link as AkselLink } from '@navikt/ds-react
 import { Tooltip } from '@navikt/ds-react'
 
 import { getUser, isUserLoggedIn } from '../auth/authentication'
+import { getUserInfo } from '../auth/userInfo'
 
 async function LoggedInUser(): Promise<ReactElement> {
     if (!isUserLoggedIn()) {
@@ -14,17 +15,20 @@ async function LoggedInUser(): Promise<ReactElement> {
         )
     }
 
-    const user = getUser()
+    const userInfo = getUserInfo()
+    if ('error' in userInfo) {
+        throw new Error(userInfo.error)
+    }
 
     return (
         <div className="flex gap-4 p-4">
             <div className="hidden sm:block text-right">
-                <BodyShort>{user.name}</BodyShort>
-                <Detail className="whitespace-nowrap">{user.email}</Detail>
+                <BodyShort>{userInfo.name}</BodyShort>
+                <Detail className="whitespace-nowrap">{userInfo.email}</Detail>
             </div>
-            <Tooltip content={`Logget in som ${user.name} (${user.email})`}>
+            <Tooltip content={`Logget in som ${userInfo.name} (${userInfo.email})`}>
                 <div className="w-[48px] h-[48px] bg-gray-400 rounded-full flex items-center justify-center text-2xl">
-                    {user.name[0]}
+                    {userInfo.name[0]}
                 </div>
             </Tooltip>
         </div>
