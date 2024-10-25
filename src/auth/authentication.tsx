@@ -8,6 +8,7 @@ import { raise } from '../utils/ts-utils'
 
 import { fakeToken } from './fake-token'
 import { getMembersOf } from './ms-graph'
+import { getUserInfo } from './userInfo'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
 
@@ -66,34 +67,23 @@ export function getUser(): {
 }
 
 export async function getUsersGroups(): Promise<string[]> {
-    const membersOf = await getMembersOf()
+    const userInfo = getUserInfo()
 
-    if ('error' in membersOf) {
-        throw new Error(
-            `Failed to get groups for user, MS responded with ${membersOf.status} ${membersOf.statusText}`,
-            {
-                cause: membersOf.error,
-            },
-        )
+    if ('error' in userInfo) {
+        throw new Error(`Failed to get groups for user: ${userInfo.status} ${userInfo.statusText}`, {
+            cause: userInfo.error,
+        })
     }
 
-    if (membersOf['@odata.nextLink'] != null) {
-        const user = getUser()
-        logger.error(
-            `Whops! A user (${user.email}) has more than max page groups (${membersOf.value.length}), time to implement pagination?`,
-        )
-    }
-
-    return membersOf.value.map((group) => group.id)
+    return userInfo.groups
 }
 
 export function isUserLoggedIn(): boolean {
-    try {
-        getUser()
-        return true
-    } catch (e) {
+    const userInfo = getUserInfo()
+    if ('error' in userInfo) {
         return false
     }
+    return true
 }
 
 export async function userHasAdGroup(groupId: string | null): Promise<boolean> {

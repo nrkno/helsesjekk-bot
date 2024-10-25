@@ -3,7 +3,7 @@ import * as R from 'remeda'
 import { Metadata } from 'next'
 import { Alert, Detail, Heading, Skeleton, BodyLong } from '@navikt/ds-react'
 
-import { getMembersOf } from '../../../auth/ms-graph'
+import { getUserInfo } from '../../../auth/userInfo'
 import BackLink from '../../../components/core/BackLink'
 import SortableGroups from '../../../components/groups/SortableGroups'
 
@@ -37,26 +37,26 @@ async function Page(): Promise<ReactElement> {
 }
 
 async function UserAdGroups(): Promise<ReactElement> {
-    const membersOf = await getMembersOf()
+    const userInfo = await getUserInfo()
 
-    if ('error' in membersOf) {
-        return <UserGroupsError error={membersOf} />
+    if ('error' in userInfo) {
+        return <UserGroupsError error={userInfo} />
     }
 
     return (
         <div>
             <Heading size="large" spacing>
-                Dine grupper ({membersOf.value.length})
+                Dine grupper ({userInfo.groups.length})
             </Heading>
             <SortableGroups
                 groups={R.pipe(
-                    membersOf.value,
-                    R.sortBy([(it) => (it.displayName ?? '').toLowerCase().includes('team'), 'desc']),
-                    R.map((it) => ({
-                        id: it.id,
-                        displayName: it.displayName ?? 'Gruppe uten navn',
-                        description: it.description ?? 'Gruppe uten beskrivelse',
+                    userInfo.groups,
+                    R.map((groupId) => ({
+                        id: groupId,
+                        displayName: 'Støtte for gruppenavn kommer senere',
+                        description: 'Støtte for gruppebeskrivelse kommer senere',
                     })),
+                    R.sortBy([(it) => (it.displayName ?? '').toLowerCase().includes('team'), 'desc']),
                 )}
             />
         </div>
