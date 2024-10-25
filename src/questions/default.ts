@@ -18,7 +18,7 @@ export function defaultQuestions(): Question[] {
             questionId: uuidV4(),
             question: 'Tilbakemeldinger',
             answers: {
-                HIGH: 'Vi gir hverandre positive og kontruktive tilbakemeldinger',
+                HIGH: 'Vi gir hverandre positive og konstruktive tilbakemeldinger',
                 MID: 'Litt sånn midt i mellom',
                 LOW: 'Vi vet ikke hvordan vi skal gi hverandre tilbakemeldinger på en konstruktiv måte',
             },
