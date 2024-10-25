@@ -33,7 +33,7 @@ function GlobalScoreGraph({ data }: Props): ReactElement {
     return (
         <div className="w-full aspect-video">
             <div className="ml-16">
-                <Switch onChange={(e) => setSamletScore(e.target.checked)}>Samlet score</Switch>
+                <Switch onChange={(e) => setSamletScore(e.target.checked)}>Samlet resultat</Switch>
             </div>
             <ResponsiveContainer width="100%" height="100%">
                 <ComposedChart data={data}>
@@ -92,7 +92,7 @@ function GlobalScoreGraph({ data }: Props): ReactElement {
                     <Legend
                         formatter={(value) => {
                             if (value === 'answers') return 'Antall svar'
-                            else if (value === 'score') return 'Samlet score'
+                            else if (value === 'score') return 'Samlet resultat'
                             return questionTypeToText(value)
                         }}
                     />
