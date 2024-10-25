@@ -13,6 +13,9 @@ export function middleware(request: NextRequest): NextResponse | void {
         logger.info('Hit old ingress, redirecting to new ingress')
         return NextResponse.redirect(new URL(url.pathname, 'https://helsesjekk-bot.nav.no/'))
     }
+    
+    console.log("Received headers:")
+    console.log(JSON.stringify(request.headers, null, 2))
 }
 
 // See "Matching Paths" below to learn more
