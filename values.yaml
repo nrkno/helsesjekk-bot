@@ -82,3 +82,5 @@ environmentVariables:
       secretKeyRef:
         name: helsesjekk-slack
         key: app-token
+  - name: PRISMA_SCHEMA_DISABLE_ADVISORY_LOCK
+    value: "true"
