@@ -7,7 +7,6 @@ import { isLocal } from '../utils/env'
 import { raise } from '../utils/ts-utils'
 
 import { fakeToken } from './fake-token'
-import { getMembersOf } from './ms-graph'
 import { getUserInfo } from './userInfo'
 
 /* eslint-disable @typescript-eslint/no-unused-vars */
@@ -89,16 +88,13 @@ export function isUserLoggedIn(): boolean {
 export async function userHasAdGroup(groupId: string | null): Promise<boolean> {
     if (!groupId) return false
 
-    const membersOf = await getMembersOf()
+    const userInfo = await getUserInfo()
 
-    if ('error' in membersOf) {
-        throw new Error(
-            `Failed to get groups for user, MS responded with ${membersOf.status} ${membersOf.statusText}`,
-            {
-                cause: membersOf.error,
-            },
-        )
+    if ('error' in userInfo) {
+        throw new Error(`Failed to get groups for user: ${userInfo.status} ${userInfo.statusText}`, {
+            cause: userInfo.error,
+        })
     }
 
-    return membersOf.value.some((group) => group.id === groupId)
+    return userInfo.groups.includes(groupId)
 }
