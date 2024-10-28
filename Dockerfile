@@ -26,6 +26,9 @@ ENV YARN_CACHE_FOLDER=/tmp/yarn-cache
 
 WORKDIR /app
 
+# Ensure the .next image cache directory exists (have seen ENOENT errors for images)
+RUN mkdir -p /app/.next/cache/images
+
 COPY --from=build /app/yarn.lock /app/
 COPY --from=build /app/.yarnrc.yml /app/
 COPY --from=build /app/.yarn /app/.yarn
