@@ -5,9 +5,14 @@ import { lazyNextleton } from 'nextleton'
 export const prisma = lazyNextleton('prisma', () => {
     const client = new PrismaClient({
         log: [
+            { emit: 'event', level: 'info' },
             { emit: 'event', level: 'warn' },
             { emit: 'event', level: 'error' },
         ],
+    })
+
+    client.$on('info', (e) => {
+        logger.info(e)
     })
 
     client.$on('error', (e) => {
