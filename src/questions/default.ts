@@ -28,9 +28,9 @@ export function defaultQuestions(): Question[] {
             questionId: uuidV4(),
             question: 'Samarbeid',
             answers: {
-                HIGH: 'Vi samarbeider godt',
+                HIGH: 'Vi samarbeider godt internt i teamet',
                 MID: 'Litt sånn midt i mellom',
-                LOW: 'Vi inkluderer ikke hverandre nok',
+                LOW: 'Vi inkluderer ikke hverandre nok internt i teamet',
             },
             type: QuestionType.TEAM_HEALTH,
         },
@@ -38,9 +38,9 @@ export function defaultQuestions(): Question[] {
             questionId: uuidV4(),
             question: 'Støtte',
             answers: {
-                HIGH: 'Jeg får den hjelpen jeg trenger',
+                HIGH: 'Vi på teamet får den hjelpen vi trenger fra andre team og avdelinger rundt oss',
                 MID: 'Litt sånn midt i mellom',
-                LOW: ' Jeg får ikke den hjelpen jeg trenger',
+                LOW: 'Vi på teamet får ikke den hjelpen vi trenger fra andre team og avdelinger rundt oss',
             },
             type: QuestionType.SPEED,
         },

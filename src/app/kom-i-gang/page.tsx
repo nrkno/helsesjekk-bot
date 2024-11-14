@@ -51,10 +51,13 @@ function GroupFinder(): ReactElement {
                 </a>
                 .
             </BodyLong>
-            <BodyLong spacing>Dersom du ikke finner gruppen din der, kan du se alle dine ad-grupper her:</BodyLong>
+            
+            {
+            // TODO: When /grupper page  can show ad group names and other info and not only a list of guids, add back this section
+            /* <BodyLong spacing>Dersom du ikke finner gruppen din der, kan du se alle dine ad-grupper her:</BodyLong>
             <LinkButton href="/kom-i-gang/grupper" prefetch={false}>
                 Finn mine grupper
-            </LinkButton>
+            </LinkButton> */}
         </div>
     )
 }
