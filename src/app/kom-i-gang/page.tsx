@@ -38,7 +38,8 @@ function GroupFinder(): ReactElement {
             <BodyLong spacing>
                 For å gi teamet ditt tilgang til å kunne se info om sitt team, må du finne en felles ad-gruppe for
                 teamet. Din bruker kan være knyttet til titalls grupper, men teamet ditt har mest sannsynligvis en
-                gruppe som alle er medlem i. Denne gruppen heter typisk noe alà team-navnet ditt.
+                gruppe som alle er medlem i. Denne gruppen heter typisk noe alà team-navnet ditt. Her kan det lønne seg
+                å spørre en utvikler om hjelp, eventuelt gi lyd på #helsesjekk-bot på slack.
             </BodyLong>
             <BodyLong spacing>
                 En måte å finne denne gruppen på er å sjekke på{' '}
@@ -51,13 +52,14 @@ function GroupFinder(): ReactElement {
                 </a>
                 .
             </BodyLong>
-            
+
             {
-            // TODO: When /grupper page  can show ad group names and other info and not only a list of guids, add back this section
-            /* <BodyLong spacing>Dersom du ikke finner gruppen din der, kan du se alle dine ad-grupper her:</BodyLong>
+                // TODO: When /grupper page  can show ad group names and other info and not only a list of guids, add back this section
+                /* <BodyLong spacing>Dersom du ikke finner gruppen din der, kan du se alle dine ad-grupper her:</BodyLong>
             <LinkButton href="/kom-i-gang/grupper" prefetch={false}>
                 Finn mine grupper
-            </LinkButton> */}
+            </LinkButton> */
+            }
         </div>
     )
 }

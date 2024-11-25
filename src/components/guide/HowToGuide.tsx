@@ -87,7 +87,7 @@ function HowToGuide(): ReactElement {
             </Heading>
 
             <BodyLong spacing>
-                For at teammedlemmene dine skal ha tilgang til å logge inn på denne nettsiden. Må vi koble kanalen
+                For at teammedlemmene dine skal ha tilgang til å logge inn på denne nettsiden må vi koble kanalen
                 slack-botten er aktivert til, til brukeren du er logget inn med.
             </BodyLong>
 
